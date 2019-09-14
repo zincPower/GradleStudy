@@ -1,0 +1,9 @@
+//setting.gradle 会被映射为 setting类
+
+// 路径用 ":" 隔开
+include ':app', ':lib:library', ':zinclibrary'
+
+rootProject.name = 'GradleStudy'
+
+// 修改 :app 项目下的 gradle 配置文件名称
+project(':app').buildFileName = 'abc.gradle'

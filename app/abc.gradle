@@ -60,7 +60,7 @@ android {
         // 配置 java apt
         javaCompileOptions {
             annotationProcessorOptions{
-                arguments = ['':'']
+//                arguments = ['':'']
             }
         }
 
@@ -122,8 +122,9 @@ android {
     // http://google.github.io/android-gradle-dsl/3.3/com.android.build.gradle.internal.dsl.BuildType.html
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles = [getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro']
         }
 
         debug {
@@ -141,7 +142,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             // 这三个会覆盖在风味中设置的值
-//            multiDexEnabled
+            multiDexEnabled false
 //            multiDexKeepFile
 //            multiDexKeepProguard
 
@@ -161,31 +162,47 @@ android {
             // Users/zinc/Documents/code/gradle/GradleStudy/app/build/reports/coverage/freeArmeabiV7a/debug/index.html
             testCoverageEnabled true
 
+            pseudoLocalesEnabled true
+
+            renderscriptDebuggable true
+
+//            setProguardFiles()
+
         }
+
+        local{
+            initWith debug{
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                matchingFallbacks = ['zinc','release','debug']
+                versionNameSuffix ".1000"
+            }
+        }
+
     }
 
     // 创建 风味 纬度
-    flavorDimensions('product', 'abi')
-    // 创建产品风味
-    productFlavors {
-        free {
-//            applicationIdSuffix '.free'
-            // 关联纬度
-            dimension 'product'
-        }
-
-        pro {
-            dimension 'product'
-        }
-
-        x86 {
-            dimension 'abi'
-        }
-
-        armeabiV7a {
-            dimension 'abi'
-        }
-    }
+//    flavorDimensions('product', 'abi')
+//    // 创建产品风味
+//    productFlavors {
+//        free {
+////            applicationIdSuffix '.free'
+//            // 关联纬度
+//            dimension 'product'
+//        }
+//
+//        pro {
+//            dimension 'product'
+//        }
+//
+//        x86 {
+//            dimension 'abi'
+//        }
+//
+//        armeabiV7a {
+//            dimension 'abi'
+//        }
+//    }
 
     // 过滤 风味 ，即 productFlavors 中设置的
 //    variantFilter {
@@ -213,4 +230,5 @@ dependencies {
 
     implementation project(":lib:library")
     implementation project(":zinclibrary")
+    implementation project(":matchingalibrary")
 }

@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.zinc.library.Test;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,9 +22,14 @@ public class MainActivity extends AppCompatActivity {
         test.show(this);
 
         int hi = test.hi(1, 4);
-        ((TextView) findViewById(R.id.tv_content)).setText("" + hi);
+        ((TextView) findViewById(R.id.tv_content)).setText("江澎涌 zinc " + hi);
 
         String name = BuildConfig.name;
         int age = BuildConfig.age;
+
+        ZincPower zincPower = new ZincPower();
+        int zinc = zincPower.hi(1, 4);
+        zincPower.show(this, zinc+"");
+
     }
 }

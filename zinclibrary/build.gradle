@@ -22,23 +22,23 @@ android {
         }
     }
 
-    // 创建 风味 纬度
-    flavorDimensions('zinc', 'handsome')
-    // 创建产品风味
-    productFlavors {
-        minApi13{
-            dimension 'zinc'
-        }
-        minApi23{
-            dimension 'zinc'
-        }
-        x86{
-            dimension 'handsome'
-        }
-        arm64{
-            dimension 'handsome'
-        }
-    }
+//    // 创建 风味 纬度
+//    flavorDimensions('zinc', 'handsome')
+//    // 创建产品风味
+//    productFlavors {
+//        minApi13{
+//            dimension 'zinc'
+//        }
+//        minApi23{
+//            dimension 'zinc'
+//        }
+//        x86{
+//            dimension 'handsome'
+//        }
+//        arm64{
+//            dimension 'handsome'
+//        }
+//    }
 
 }
 

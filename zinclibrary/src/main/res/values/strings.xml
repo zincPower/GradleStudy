@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">zincLibrary</string>
+    <string name="test_content">zinc Power test Content</string>
 </resources>

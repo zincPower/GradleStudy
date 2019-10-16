@@ -1,0 +1,81 @@
+// abc.gradle 会被映射为 project
+
+// 传递了一个 map集合
+apply plugin: 'com.android.application'
+
+android {
+    // 编译源代码时，使用的sdk版本 使用/Users/zinc/Library/Android/sdk/platforms/android-28/android.jar
+    // 作为classPath 进行编译
+    compileSdkVersion 28
+    // 这里会找到 /Users/zinc/Library/Android/sdk/build-tools/29.0.1 里的工具进行编译，
+    // eg: aapt、aidl
+    buildToolsVersion "29.0.1"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1000
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 创建 风味 纬度
+    flavorDimensions('product', 'abi')
+    // 创建产品风味
+    productFlavors {
+        free {
+//            applicationIdSuffix '.free'
+            // 关联纬度
+            dimension 'product'
+        }
+
+        pro {
+            dimension 'product'
+        }
+
+        x86 {
+            dimension 'abi'
+        }
+
+        armeabiV7a {
+            dimension 'abi'
+        }
+    }
+
+    // 过滤 风味 ，即 productFlavors 中设置的
+//    variantFilter {
+//        variant ->
+//            variant.flavors.each{
+//                // 将 所有包含 pro 的风味去除
+//                if(it.name.contains('pro')){
+//                    setIgnore(true)
+//                }
+//            }
+//    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+//    implementation project(":lib:library")
+    implementation project(":zinclibrary")
+    implementation project(":matchingalibrary")
+}

@@ -11,12 +11,27 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    // terminal 输入 adb 可以查看
+    adbOptions{
+        // apk 安装时候可选参数
+        // adb install -d
+        installOptions{
+
+        }
+        // adb 执行超时时间 毫秒
+        timeOutInMs{
+
+        }
+    }
+
 }
 
 dependencies {

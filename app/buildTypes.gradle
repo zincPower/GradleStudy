@@ -1,0 +1,102 @@
+// abc.gradle 会被映射为 project
+
+// 传递了一个 map集合
+apply plugin: 'com.android.application'
+
+android {
+    // 编译源代码时，使用的sdk版本 使用/Users/zinc/Library/Android/sdk/platforms/android-28/android.jar
+    // 作为classPath 进行编译
+    compileSdkVersion 28
+    // 这里会找到 /Users/zinc/Library/Android/sdk/build-tools/29.0.1 里的工具进行编译，
+    // eg: aapt、aidl
+    buildToolsVersion "29.0.1"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1000
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    // http://google.github.io/android-gradle-dsl/3.3/com.android.build.gradle.internal.dsl.BuildType.html
+    buildTypes {
+        release {
+            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles = [getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro']
+        }
+
+        debug {
+            // 和风味是一样的，会追加
+            applicationIdSuffix '.debug'
+            // debug 分支默认为 true， 设置为 false 则无法启用调试模式
+            debuggable false
+            // debug 分支默认为 true， 设置为 false 则无法启用调试模式， ndk调试
+            jniDebuggable false
+
+//            manifestPlaceholders = []
+
+            // 开启混淆，代码优化 https://developer.android.com/studio/build/shrink-code
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // 这三个会覆盖在风味中设置的值
+            multiDexEnabled false
+//            multiDexKeepFile
+//            multiDexKeepProguard
+
+            // 渲染脚本等级
+//            renderscriptOptimLevel
+
+            // 是否压缩资源
+            shrinkResources false
+
+            // 签名
+//            signingConfig signingConfigs.mySign
+
+            // 测试覆盖率，记得把混淆关上
+            // ./gradlew :app:tasks 查看所有任务
+            // ./gradlew cFAVDCR 用驼峰式进行运行
+            // 产生报告路径
+            // Users/zinc/Documents/code/gradle/GradleStudy/app/build/reports/coverage/freeArmeabiV7a/debug/index.html
+            testCoverageEnabled true
+
+            pseudoLocalesEnabled true
+
+            renderscriptDebuggable true
+
+//            setProguardFiles()
+
+        }
+
+        local {
+            initWith debug {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                matchingFallbacks = ['zinc', 'release', 'debug']
+                versionNameSuffix ".1000"
+            }
+        }
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    implementation project(":lib:library")
+    implementation project(":zinclibrary")
+    implementation project(":matchingalibrary")
+}

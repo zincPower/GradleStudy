@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GradleStudy</string>
+    <string name="test_content">zinc Power test Content</string>
+    <string name="zincName">小盆友</string>
+</resources>

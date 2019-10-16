@@ -1,0 +1,124 @@
+// abc.gradle 会被映射为 project
+
+// 传递了一个 map集合
+apply plugin: 'com.android.application'
+
+android {
+    // 编译源代码时，使用的sdk版本 使用/Users/zinc/Library/Android/sdk/platforms/android-28/android.jar
+    // 作为classPath 进行编译
+    compileSdkVersion 28
+    // 这里会找到 /Users/zinc/Library/Android/sdk/build-tools/29.0.1 里的工具进行编译，
+    // eg: aapt、aidl
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        // applicationId 应用的包名
+        // applicationId 会替换 AndroidManifest.xml 中的 manifest 标签下 package 的 value
+        applicationId "com.zinc.gradlestudy.real"
+//        applicationIdSuffix "test"
+
+        minSdkVersion 19
+//        maxSdkVersion 28
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+//        versionNameSuffix "test"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // svg 支持
+        vectorDrawables {
+            // 如果 minSdkVersion 小于 21，只生成mdpi的png
+            generatedDensities 'mdpi'
+
+            // 设置为 true，会忽略 generatedDensities ，会加入svg兼容包
+            useSupportLibrary true
+        }
+
+        // native "构建配置"!!! 定义在BaseFlavor，查看 ExternalNativeBuildOptions
+        externalNativeBuild {
+            // 例如过滤一些 cpu架构
+            ndkBuild {
+                // Passes an optional argument to ndk-build.
+                arguments "NDK_MODULE_PATH+=../../third_party/modules"
+            }
+            // For ndk-build, instead use the ndkBuild block.
+            cmake {
+                // Passes optional arguments to CMake.
+                arguments "-DANDROID_ARM_NEON=TRUE", "-DANDROID_TOOLCHAIN=clang"
+
+                // Sets a flag to enable format macro constants for the C compiler.
+                cFlags "-D__STDC_FORMAT_MACROS"
+
+                // Sets optional flags for the C++ compiler.
+                cppFlags "-fexceptions", "-frtti"
+
+                // Specifies the library and executable targets from your CMake project
+                // that Gradle should build.
+                targets "libexample-one", "my-executible-demo"
+            }
+        }
+
+        // 配置 java apt
+        javaCompileOptions {
+            annotationProcessorOptions {
+//                arguments = ['':'']
+            }
+        }
+
+        // 用来占位 manifest
+        manifestPlaceholders = [
+                key: '123'
+        ]
+
+        // 是否开启分包 65k问题 索引值为两个字节，所以最大为0xffff，需要进行dex分包
+//        multiDexEnabled true
+        // 分包规则 每一行表示需要配置到主dex的一个类 com/a/c/c.class
+//        multiDexKeepFile file('multidex-config.txt')
+        // -keep com.a.b.c.**{*;} 和上面写法一样
+//        multiDexKeepProguard file('multidex-config.pro')
+
+        // 打包到ndk的配置，这样产生的apk包只包含'armeabi-v7a'
+        ndk {
+            abiFilter 'armeabi-v7a'
+        }
+
+        // 可以通过 BuildConfig 进行获取
+        buildConfigField('String', 'name', '"zinc"')
+        buildConfigField('int', 'age', '26')
+
+        // 添加至 res/value，通过 R.string.age 获取
+        resValue('string', 'age', '12year')
+
+        // 剔除掉 Library 带来的 风味维度
+        missingDimensionStrategy 'zinc', 'minApi13', 'minApi23'
+        missingDimensionStrategy 'handsome', 'x86', 'arm64'
+
+//        resConfig "zh"
+//        resConfigs "zh","en"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles = [getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro']
+        }
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    implementation project(":lib:library")
+    implementation project(":zinclibrary")
+    implementation project(":matchingalibrary")
+}

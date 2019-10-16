@@ -6,4 +6,6 @@ include ':app', ':lib:library', ':zinclibrary', ':matchingalibrary'
 rootProject.name = 'GradleStudy'
 
 // 修改 :app 项目下的 gradle 配置文件名称
-project(':app').buildFileName = 'abc.gradle'
+//project(':app').buildFileName = 'abc.gradle'
+//project(':app').buildFileName = 'databing.gradle'
+project(':app').buildFileName = 'flavor.gradle'

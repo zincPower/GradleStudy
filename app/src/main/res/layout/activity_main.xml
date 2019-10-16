@@ -13,10 +13,10 @@
         android:gravity="center_vertical"
         android:text="@string/test_content" />
 
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/age" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_content"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/age" />-->
 
 </LinearLayout>

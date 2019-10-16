@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.zinc.gradlestudy"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 资源合并优先级：
+    // Variant(helloDebug) > buildType(Debug) > flavor(hello) > (main > aapt -S) > dependencies
+
+    // aapt 编译资源文件
+    // 命令行通过 aapt 可以查看可输入的
+    // https://developer.android.com/studio/command-line/aapt2
+    aaptOptions{
+        // aapt 执行的额外参数
+        //  --rename-manifest-package 更改包名
+//        additionalParameters '--rename-manifest-package','com.zinc.test',
+//        additionalParameters '-R', 'src/main/res2/', '--auto-add-overlay'
+//        additionalParameters '-v'
+
+        // 对 png 进行优化检查
+        cruncherEnabled false
+
+        // 忽略掉 jpg 后缀的图像，只会排除 res 下的资源，assets下的资源不会排除
+//        ignoreAssets "*.jpg"
+
+        // 是否对资源进行压缩，如果传入''，则表明不会进行压缩，默认不对"jpg"、"png"压缩
+        // aapt l -v apk路径 进行查看
+        noCompress ''
+        // 不对 bat 进行压缩
+//        noCompress '.bat'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}

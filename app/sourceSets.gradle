@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.zinc.gradlestudy"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 资源合并优先级：
+    // Variant(helloDebug) > buildType(Debug) > flavor(hello) > (main > aapt -S) > dependencies
+
+    sourceSets{
+        main{
+            // 定义多个资源目录，如果资源间有重复，则会报错
+            res.srcDirs 'src/main/res', 'src/main/zinc-res'
+
+            // The Android AIDL source directory for this source set.
+//            aidl.srcDir ''
+
+//            The Android Assets directory for this source set.
+//            assets.srcDir ''
+
+//            java.srcDir ''
+//            The Java source which is to be compiled by the Java compiler into the class output directory.
+
+            // The Android JNI source directory for this source set.
+//            jni.srcDir ''
+
+            // The Android JNI libs directory for this source set.
+//            jniLibs.srcDir()
+
+
+//            The Android Manifest file for this source set.
+//            manifest.srcFile
+
+//            name
+//            The name of this source set.
+
+//            The Android RenderScript source directory for this source set.
+//            renderscript.srcDir ''
+
+//            The Android Resources directory for this source set.
+//            res.srcDir ''
+
+//            The Java resources which are to be copied into the javaResources output directory.
+//            resources.srcDir ''
+        }
+
+        // hello 风味会叠加在 main 上面，而不是替换
+//        hello{
+//
+//        }
+    }
+
+    productFlavors{
+        hello{
+
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}

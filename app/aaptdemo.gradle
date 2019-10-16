@@ -1,0 +1,137 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.zinc.gradlestudy"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 资源合并优先级：
+    // Variant(helloDebug) > buildType(Debug) > flavor(hello) > (main > aapt -S) > dependencies
+
+    // aapt 编译资源文件
+    // 命令行通过 aapt 可以查看可输入的
+    // https://developer.android.com/studio/command-line/aapt2
+    aaptOptions{
+        // aapt 执行的额外参数
+        //  --rename-manifest-package 更改包名
+//        additionalParameters '--rename-manifest-package','com.zinc.test',
+//        additionalParameters '-R', 'src/main/res2/', '--auto-add-overlay'
+//        additionalParameters '-v'
+
+        // 对 png 进行优化检查
+        cruncherEnabled false
+
+        // 忽略掉 jpg 后缀的图像，只会排除 res 下的资源，assets下的资源不会排除
+//        ignoreAssets "*.jpg"
+
+        // 是否对资源进行压缩，如果传入''，则表明不会进行压缩，默认不对"jpg"、"png"压缩
+        // aapt l -v apk路径 进行查看
+        noCompress ''
+        // 不对 bat 进行压缩
+//        noCompress '.bat'
+    }
+
+    sourceSets{
+        main{
+            // 定义多个资源目录，如果资源间有重复，则会报错
+            res.srcDirs 'src/main/res', 'src/main/zinc-res'
+
+            // The Android AIDL source directory for this source set.
+//            aidl.srcDir ''
+
+//            The Android Assets directory for this source set.
+//            assets.srcDir ''
+
+//            java.srcDir ''
+//            The Java source which is to be compiled by the Java compiler into the class output directory.
+
+            // The Android JNI source directory for this source set.
+//            jni.srcDir ''
+
+            // The Android JNI libs directory for this source set.
+//            jniLibs.srcDir()
+
+
+//            The Android Manifest file for this source set.
+//            manifest.srcFile
+
+//            name
+//            The name of this source set.
+
+//            The Android RenderScript source directory for this source set.
+//            renderscript.srcDir ''
+
+//            The Android Resources directory for this source set.
+//            res.srcDir ''
+
+//            The Java resources which are to be copied into the javaResources output directory.
+//            resources.srcDir ''
+        }
+
+        // hello 风味会叠加在 main 上面，而不是替换
+//        hello{
+//
+//        }
+    }
+
+    productFlavors{
+        hello{
+
+        }
+    }
+
+//    // terminal 输入 adb 可以查看
+//    adbOptions{
+//        // apk 安装时候可选参数
+//        // adb install -d
+//        installOptions{
+//
+//        }
+//        // adb 执行超时时间 毫秒
+//        timeOutInMs{
+//
+//        }
+//    }
+
+    compileOptions{
+
+        // Java source files encoding.
+        // JAVA 源文件编码，默认为 utf-8
+        encoding 'UTF-8'
+
+        //  Whether Java compilation should be incremental or not.
+        // java编译是否使用增量模式
+        incremental true
+
+        // Language level of the java source code.
+        sourceCompatibility JavaVersion.VERSION_1_8
+
+        // Version of the generated Java bytecode.
+        targetCompatibility JavaVersion.VERSION_1_8
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}

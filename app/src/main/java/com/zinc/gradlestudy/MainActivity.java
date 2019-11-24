@@ -3,8 +3,6 @@ package com.zinc.gradlestudy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,9 +22,18 @@ public class MainActivity extends AppCompatActivity {
 //        String name = BuildConfig.name;
 //        int age = BuildConfig.age;
 
-        ZincPower zincPower = new ZincPower();
-        int zinc = zincPower.hi(1, 4);
-        zincPower.show(this, zinc+"");
+//        com.zinc.ZincPower zincPower = new com.zinc.ZincPower();
+//        int zinc = zincPower.hi(1, 4);
+//        zincPower.show(this, zinc + "");
+
+//        Jpy jpy = new Jpy();
+//        jpy.say();
+
+//        Xpy xpy = new Xpy();
+//        xpy.say();
+
+//        Zinc zinc1 = new Zinc();
+//        zinc1.say();
 
     }
 }

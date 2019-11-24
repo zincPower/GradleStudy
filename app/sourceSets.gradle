@@ -22,19 +22,40 @@ android {
     // 资源合并优先级：
     // Variant(helloDebug) > buildType(Debug) > flavor(hello) > (main > aapt -S) > dependencies
 
-    sourceSets{
-        main{
+    sourceSets {
+        main {
+
             // 定义多个资源目录，如果资源间有重复，则会报错
-            res.srcDirs 'src/main/res', 'src/main/zinc-res'
+//            res.srcDirs 'src/main/res', 'src/main/zinc-res'
 
             // The Android AIDL source directory for this source set.
-//            aidl.srcDir ''
+//            aidl.srcDirs 'src/main/aidl', 'src/main/zincAidl'
 
-//            The Android Assets directory for this source set.
-//            assets.srcDir ''
+//            assets.srcDirs 'src/main/assets', 'src/main/zincAssets'
 
-//            java.srcDir ''
-//            The Java source which is to be compiled by the Java compiler into the class output directory.
+            java {
+                srcDirs = [
+                        'src/main/java',
+                        'src/main/patternFilterableDemo/exclude'
+                ]
+
+//                excludes = ['zincStudy/*.java']
+
+                // 以属性的方式设置，会覆盖之前设置的值
+//                includes = ["com/zinc/gradlestudy/MainActivity.java"]
+                // 以方法的形式，则不会覆盖，而是追加
+//                include(['src/main/patternFilterableDemo/**/ZincTest.java'])
+
+                // 是只读属性
+//                sourceFiles = [fileTree(dir: 'mine', include: ['**/*.java'])]
+
+//                exclude {
+//                    FileTreeElement elem ->
+//                        println "====$elem"
+//                        println "Searching for files, found: " + elem.relativePath
+//                        !(elem.isDirectory() || elem.name.equals('zinc.java'))
+//                }
+            }
 
             // The Android JNI source directory for this source set.
 //            jni.srcDir ''
@@ -42,32 +63,81 @@ android {
             // The Android JNI libs directory for this source set.
 //            jniLibs.srcDir()
 
+            // The Android Manifest file for this source set.
+//            manifest.srcFile 'src/main/ZincManifest.xml'
 
-//            The Android Manifest file for this source set.
-//            manifest.srcFile
-
-//            name
-//            The name of this source set.
-
-//            The Android RenderScript source directory for this source set.
+            // The Android RenderScript source directory for this source set.
 //            renderscript.srcDir ''
 
-//            The Android Resources directory for this source set.
+            // The Android Resources directory for this source set.
 //            res.srcDir ''
 
-//            The Java resources which are to be copied into the javaResources output directory.
+            // The Java resources which are to be copied into the javaResources output directory.
 //            resources.srcDir ''
+
         }
 
-        // hello 风味会叠加在 main 上面，而不是替换
-//        hello{
-//
+//        // hello 风味会叠加在 main 上面，而不是替换
+//        hello {
+////            java.srcDir 'src/main/helloJava'
 //        }
+
+        zinc {
+            // https://developer.android.google.cn/studio/build/gradle-tips
+
+            // If all the files for a source set are located under a single root
+            // directory, you can specify that directory using the setRoot property.
+            // When gathering sources for the source set, Gradle looks only in locations
+            // relative to the root directory you specify. For example, after applying
+            // the configuration below for the androidTest source set, Gradle looks for
+            // Java sources only in the src/tests/java/ directory.
+            // 这段话的意思是
+            // 如果我们的代码都在同一个目录下，可以用setRoot进行设置，
+            // 设置了 setRoot 之后，gradle的编译只会在同级目录下找资源，
+            // 例如：只会在 src/zincPower/java 找java代码
+            // 会忽略 java.srcDirs 设置的路径
+            setRoot 'src/zincPower'
+
+            // 这个会忽略
+            java.srcDirs 'zzz'
+        }
+
+//        debug.setRoot('build-types/zinc')
+
+//            java {
+//                srcDirs = [
+//                        'java'
+//                ]
+//            }
+
+//        }
+
+//        zinc{
+//            setRoot('app/src/build-types/zincApk')
+//            manifest.srcFile 'AndroidManifest.xml'
+//
+//            println "rootDir: $rootDir"
+////            println "root: $root"
+//            println "rootPorject: $rootProject"
+//        }
+
+//        main.java.getIncludes().each { println "Added include: $it" }
+//        main.java.getExcludes().each { println "Added exclude: $it" }
+//        main.java.sourceFiles.each { println "File in source set: " + it }
+
+        main.assets.getIncludes().each { println "Added include: $it" }
+        main.assets.getExcludes().each { println "Added exclude: $it" }
+        main.assets.sourceFiles.each { println "File in source set: " + it }
     }
 
-    productFlavors{
-        hello{
 
+    flavorDimensions('product')
+    productFlavors {
+//        hello {
+//            dimension 'product'
+//        }
+        zinc {
+            dimension 'product'
         }
     }
 

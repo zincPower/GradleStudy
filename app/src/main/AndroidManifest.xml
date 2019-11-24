@@ -17,9 +17,16 @@
             </intent-filter>
         </activity>
 
-<!--        <meta-data-->
-<!--            android:name="key"-->
-<!--            android:value="${key}" />-->
+        <!--        <meta-data-->
+        <!--            android:name="key"-->
+        <!--            android:value="${key}" />-->
+
+<!--        <uses-library-->
+<!--            android:name="com.zinc.matchingalibrary"-->
+<!--            android:required="true" />-->
+
+        <meta-data android:name="key" android:value="jpy"/>
+
     </application>
 
 </manifest>

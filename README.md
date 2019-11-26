@@ -81,4 +81,4 @@ csdn：https://blog.csdn.net/weixin_37625173
 
 如果觉得博客对您有所帮助或启发，赞赏下吧。小盆友会写更多的优质文章与大家分享
 
-![](https://github.com/zincPower/GradleStudy/tree/master/img/zincPay.jpg)
+![](https://github.com/zincPower/GradleStudy/blob/master/img/zincPay.jpg)

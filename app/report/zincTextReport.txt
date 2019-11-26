@@ -1,0 +1,77 @@
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/AndroidManifest.xml:5: Warning: On SDK version 23 and up, your app data will be automatically backed up and restored on app install. Consider adding the attribute android:fullBackupContent to specify an @xml resource which configures which files to backup. More info: https://developer.android.com/training/backup/autosyncapi.html [AllowBackup]
+    <application
+     ~~~~~~~~~~~
+
+   Explanation for issues of type "AllowBackup":
+   The allowBackup attribute determines if an application's data can be backed
+   up and restored. It is documented at
+   http://developer.android.com/reference/android/R.attr.html#allowBackup
+
+   By default, this flag is set to true. When this flag is set to true,
+   application data can be backed up and restored by the user using adb backup
+   and adb restore.
+
+   This may have security consequences for an application. adb backup allows
+   users who have enabled USB debugging to copy application data off of the
+   device. Once backed up, all application data can be read by the user. adb
+   restore allows creation of application data from a source specified by the
+   user. Following a restore, applications should not assume that the data,
+   file permissions, and directory permissions were created by the application
+   itself.
+
+   Setting allowBackup="false" opts an application out of both backup and
+   restore.
+
+   To fix this warning, decide whether your application should support backup,
+   and explicitly set android:allowBackup=(true|false)".
+
+   If not set to false, and if targeting API 23 or later, lint will also warn
+   that you should set android:fullBackupContent to configure auto backup.
+
+   https://developer.android.com/training/backup/autosyncapi.html
+
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/drawable/ic_arrow_drop_down_black_24dp.xml:1: Error: The resource R.drawable.ic_arrow_drop_down_black_24dp appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/drawable/ic_launcher_background.xml:2: Error: The resource R.drawable.ic_launcher_background appears to be unused [UnusedResources]
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+^
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png: Error: The resource R.mipmap.ic_launcher_round appears to be unused [UnusedResources]
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/values/strings.xml:5: Error: The resource R.string.zincName appears to be unused [UnusedResources]
+    <string name="zincName">zinc</string>
+            ~~~~~~~~~~~~~~~
+Also affects:
+     /Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/values-en/
+     strings.xml:4,
+     /Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/values-fr/
+     strings.xml:4,
+     /Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/values-zh/
+     strings.xml:4
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/mipmap-xhdpi/t1.jpg: Error: The resource R.mipmap.t1 appears to be unused [UnusedResources]
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/mipmap-xhdpi/t11.jpg: Error: The resource R.mipmap.t11 appears to be unused [UnusedResources]
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests=true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests=true.
+
+/Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/mipmap-xhdpi/t11.jpg: Warning: The following unrelated icon files have identical contents: t1.jpg, t11.jpg [IconDuplicates]
+Also affects:
+     /Users/zinc/Documents/code/gradle/GradleStudy/app/src/main/res/mipmap-xhd
+     pi/t1.jpg
+
+   Explanation for issues of type "IconDuplicates":
+   If an icon is repeated under different names, you can consolidate and just
+   use one of the icons and delete the others to make your application
+   smaller. However, duplicated icons usually are not intentional and can
+   sometimes point to icons that were accidentally overwritten or accidentally
+   not updated.
+
+6 errors, 2 warnings

@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.zinc.gradlestudy"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 帮助发现并纠正代码结构质量
+    // 使用 lintDebug 运行
+    lintOptions {
+
+        // 发现错误，停止构建
+        abortOnError true
+
+        // 设置类型的提示级别
+        // 可用id 可用 "lint --list" 查找
+//        error('UnusedResources')
+
+        // 是否输出全路径
+//        absolutePaths true
+
+        // 设置只检查的。
+        // 可用id 可用 "lint --list" 查找
+//        check 'UnusedResources'
+
+        // 是否检查所有警告
+//        checkAllWarnings false
+
+        // 在 release 版本是否检查 fatal 的类型
+//        checkReleaseBuilds true
+
+        // 关闭或开启某个id
+        // 可用id 可用 "lint --list" 查找
+//        disable 'UnusedResources'
+//        enable ''
+
+        // Returns whether lint should include explanations for issue errors. (Note that HTML and XML reports intentionally do this unconditionally, ignoring this setting.)
+        // html 和 xml 的报告会忽略这个
+//        explainIssues true
+
+        // lint 配置
+//        lintConfig file('lint/rule_lint.xml')
+
+        // html 的输出路径
+//        htmlOutput file('report/zincHtmlReport.html')
+
+        // 是否需要html报告
+//        htmlReport true
+
+        // 是否忽略警告，只检查error
+//        ignoreWarnings true
+
+        // 是否错误时，需要包含行数
+//        noLines false
+
+        // 是否关闭一些输出信息
+//        quiet true
+
+        // 没办法直接操作，由error()...方法操作
+//        severityOverrides
+
+        // 是否输出全部信息
+//        showAll true
+
+        // 输出
+//        textOutput file('report/zincTextReport.txt')
+//        textReport true
+
+        // 是否将警告作为错误输出
+//        warningsAsErrors true
+
+//        xmlOutput file('report/zincXmlReport.xml')
+//        xmlReport true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}

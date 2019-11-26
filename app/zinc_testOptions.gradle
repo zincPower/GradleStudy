@@ -11,6 +11,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -18,10 +19,21 @@ android {
         }
     }
 
-    // 开启则会帮我把 /Users/zinc/Library/Android/sdk/extras/android/m2repository/com/android/databing 的资源引入
-    // https://developer.android.com/topic/libraries/data-binding/start
-    dataBinding{
-        enabled true
+    // ./gradlew testDebugUnitTest
+    testOptions {
+        // 关闭动画
+        animationsDisabled false
+
+        unitTests.all {
+            // https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/Test.html
+            systemProperty 'zinc', 'xpy'
+
+            // 输出，在控制面板才能看到
+            testLogging.showStandardStreams = true
+
+            exclude 'com/zinc/gradlestudy/JTest.class'
+        }
+
     }
 
 }

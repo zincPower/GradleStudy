@@ -20,7 +20,7 @@ android {
     }
 
     // 资源合并优先级：
-    // Variant(helloDebug) > buildType(Debug) > flavor(hello) > (main > aapt -S) > dependencies
+    // Variant(helloDebug) > buildType(Debug) > zinc_flavor(hello) > (main > aapt -S) > dependencies
 
     // aapt 编译资源文件
     // 命令行通过 aapt 可以查看可输入的

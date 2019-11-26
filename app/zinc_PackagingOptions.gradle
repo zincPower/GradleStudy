@@ -19,10 +19,14 @@ android {
         }
     }
 
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            println "zinc: ${variant.versionName} ${variant.flavorName}"
-        }
+    packagingOptions{
+        // http://google.github.io/android-gradle-dsl/3.3/com.android.build.gradle.internal.dsl.PackagingOptions.html
+        // 当多个时，取第一个，没有默认值
+        pickFirsts = []
+        // 合并，默认为 /META-INF/services/**
+        merges = []
+        // 排除
+        excludes = []
     }
 
 }

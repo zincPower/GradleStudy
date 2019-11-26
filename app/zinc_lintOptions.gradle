@@ -29,6 +29,7 @@ android {
         // 设置类型的提示级别
         // 可用id 可用 "lint --list" 查找
 //        error('UnusedResources')
+//        ignore('UnusedResources')
 
         // 是否输出全路径
 //        absolutePaths true
@@ -53,7 +54,7 @@ android {
 //        explainIssues true
 
         // lint 配置
-//        lintConfig file('lint/rule_lint.xml')
+        lintConfig file('lint/rule_lint.xml')
 
         // html 的输出路径
 //        htmlOutput file('report/zincHtmlReport.html')

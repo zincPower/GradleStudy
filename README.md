@@ -4,43 +4,46 @@
 
 本项目主要用于记录 Android Gradle 学习中的点滴。
 
-### 1、 博文讲解可移步至以下两个地方：
+### 1、博文讲解可移步至以下两个地方：
 
 CSDN: [Android Gradle](https://blog.csdn.net/weixin_37625173/category_9350766.html)
 
 掘金：[猛猛的小盆友](https://juejin.im/user/5c3033ef51882524ec3a88ba/posts)
 
-### 2、 代码：
+### 2、代码：
 
 github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 
 ## 二、已有章节
 
-### 1、 buildTypes
+### 1、buildTypes
 
 博文：[buildTypes——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100824010)
 
-### 2、 defaultConfig
+### 2、defaultConfig
 
 博文：[defaultConfig——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100641538)
 
-### 3、 productFlavors
+### 3、productFlavors
 
 博文：[flavorDimensions和productFlavors——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100867037)
 
-### 4、 风味包配置
+### 4、风味包配置
 
 博文：[android多渠道包（风味包）——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/102510549)
 
-### 5、 sourceSets
+### 5、sourceSets
 
 博文：[sourceSets——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/102616036)
+
+### 6、lintOptions
+
+博文：[lintOptions——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/103236227)
 
 ## 三、后续章节
 
 - dexOptions
 - externalNativeBuild
-- lintOptions
 - aaptOptions
 - adbOptions
 - packagingOptions

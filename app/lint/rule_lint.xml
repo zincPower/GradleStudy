@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <lint>
-    <issue id="GoogleAppIndexingWarning" severity="ignore" />
+    <!-- id可以通过 "lint \-\-list" 查看支持的id-->
+    <!-- severity 是设置的提示级别 -->
     <issue id="UnusedResources" severity="error"/>
 </lint>

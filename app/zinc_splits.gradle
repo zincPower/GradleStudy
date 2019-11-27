@@ -20,6 +20,12 @@ android {
     }
 
     splits {
+
+//        language {
+//            enable = true
+//            include "es-rMX", "zh", "en"
+//        }
+
 //        abi {
 //            // 是否开启
 //            enable true
@@ -31,7 +37,7 @@ android {
 //            universalApk true
 //        }
 
-        // 分辨率
+//        // 分辨率
 //        density {
 //            // 开启
 //            enable true

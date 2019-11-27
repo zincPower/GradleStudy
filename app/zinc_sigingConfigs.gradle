@@ -23,10 +23,23 @@ android {
 
     signingConfigs {
         mySign {
-            storeFile file('')
-            storePassword ''
-            keyAlias ''
-            keyPassword ''
+            storeFile file('../key/gradleStudy.jks')
+            storePassword 'gradleStudy'
+            storeType 'jks'
+            keyAlias 'gradleStudy'
+            keyPassword '123456'
+            v1SigningEnabled false
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.mySign
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            println "zinc $signingConfigs.mySign"
         }
     }
 

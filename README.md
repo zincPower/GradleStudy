@@ -53,6 +53,17 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 - splits
 - testOptions
 
+## 四、如何使用该项目
+
+1. 打开根目录下的 settings.gradle 文件
+
+2. 修改下面这段代码
+```
+// xxx 即我们想运行的 gradle 配置
+// 例如：我们想运行 lintOptions 的配置，此处的 xxx 替换为 zinc_lintOptions
+project(':app').buildFileName = 'xxx.gradle'
+```
+
 ## 四、其他项目推荐
 
 ### 1、Android 高级UI

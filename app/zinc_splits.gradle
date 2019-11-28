@@ -29,21 +29,37 @@ android {
 //        abi {
 //            // 是否开启
 //            enable true
+//
+//            // 排除不必要的架构
+////            exclude 'x86','arm64-v8a'
+//
 //            // 重置包含的目录，因为已经是包含全部
-//            reset()
-//            // 设置包含
-//            include 'armeabi-v7a', 'x86'
+////            reset()
+//            // 设置包含，调用前需要先用 reset 将默认清除
+////            include 'armeabi-v7a', 'x86'
+//
 //            // 是否打出包含全部的apk
 //            universalApk true
 //        }
 
-//        // 分辨率
-//        density {
-//            // 开启
-//            enable true
-//            // 排除分辨率
-//            exclude 'xhdpi'
-//        }
+        // 分辨率
+        density {
+            // 开启
+            enable true
+
+            // 排除分辨率
+//            exclude 'hdpi', 'ldpi', 'mdpi', 'xhdpi'
+
+            // 重置默认分辨率列表
+//            reset()
+
+            // 包含分辨率
+//            include 'hdpi', 'xxhdpi'
+
+            // https://developer.android.com/guide/topics/manifest/compatible-screens-element
+            // 会在 manifest 中添加 <compatible-screens><screen ...>
+            compatibleScreens 'small', 'normal', 'large', 'xlarge'
+        }
     }
 
 }

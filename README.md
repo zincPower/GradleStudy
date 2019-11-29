@@ -1,8 +1,18 @@
 # GradleStudy
 
+>目录
+>一、项目宗旨
+>二、已有章节
+>三、后续章节
+>四、如何使用该项目
+>五、其他项目推荐
+>六、作者简介
+
 ## 一、项目宗旨
 
 本项目主要用于记录 Android Gradle 学习中的点滴。
+
+![](https://github.com/zincPower/GradleStudy/blob/master/img/logo.png)
 
 ### 1、博文讲解可移步至以下两个地方：
 
@@ -18,27 +28,59 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 
 ### 1、buildTypes
 
-博文：[buildTypes——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100824010)
+- CSDN: [buildTypes——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100824010)
+
+- 掘金: [buildTypes——安卓gradle](https://juejin.im/post/5d7e01125188253a8305480a)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_buildTypes.gradle)
 
 ### 2、defaultConfig
 
-博文：[defaultConfig——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100641538)
+- CSDN: [defaultConfig——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100641538)
+
+- 掘金: [defaultConfig——安卓gradle](https://juejin.im/post/5d7baa7d51882554841c50d5)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_defaultConfig.gradle)
 
 ### 3、productFlavors
 
-博文：[flavorDimensions和productFlavors——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100867037)
+- CSDN: [flavorDimensions和productFlavors——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/100867037)
+
+- 掘金: [flavorDimensions和productFlavors——安卓gradle](https://juejin.im/post/5da7215ef265da5b576bebbd)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_flavor.gradle)
 
 ### 4、风味包配置
 
-博文：[android多渠道包（风味包）——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/102510549)
+- CSDN: [android多渠道包（风味包）——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/102510549)
+
+- 掘金: [android多渠道包（风味包）——安卓gradle](https://juejin.im/post/5da722dbf265da5b8e0f1773)
+
+- github代码: [传送门](https://github.com/zincPower/FlavorDemo)
 
 ### 5、sourceSets
 
-博文：[sourceSets——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/102616036)
+- CSDN: [sourceSets——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/102616036)
+
+- 掘金: [sourceSets——安卓gradle](https://juejin.im/post/5dd9eda7f265da7de667d2bc)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_sourceSets.gradle)
 
 ### 6、lintOptions
 
-博文：[lintOptions——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/103236227)
+- CSDN: [lintOptions——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/103236227)
+
+- 掘金: [lintOptions——安卓gradle](https://juejin.im/post/5ddca7a0518825730753a31e)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_lintOptions.gradle)
+
+### 7、splits
+
+- CSDN: [splits——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/103284575)
+
+- 掘金: [splits——安卓gradle](https://juejin.im/post/5ddfe513e51d45027e2a7e96)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_splits.gradle)
 
 ## 三、后续章节
 
@@ -50,7 +92,6 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 - compileOptions
 - dataBinding
 - signingConfigs
-- splits
 - testOptions
 
 ## 四、如何使用该项目
@@ -64,7 +105,7 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 project(':app').buildFileName = 'xxx.gradle'
 ```
 
-## 四、其他项目推荐
+## 五、其他项目推荐
 
 ### 1、Android 高级UI
 
@@ -84,7 +125,7 @@ project(':app').buildFileName = 'xxx.gradle'
 
 项目地址：[JPermission](https://github.com/zincPower/JPermission)
 
-## 四、作者简介
+## 六、作者简介
 ### 1、个人博客
 
 掘金：https://juejin.im/user/5c3033ef51882524ec3a88ba/posts

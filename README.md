@@ -82,6 +82,14 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 
 - github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_splits.gradle)
 
+### 8、signingConfigs
+
+- CSDN: [signingConfigs——安卓 gradle](https://blog.csdn.net/weixin_37625173/article/details/103322670)
+
+- 掘金: [signingConfigs——安卓 gradle](https://juejin.im/post/5de298266fb9a0719f649a6d)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_sigingConfigs.gradle)
+
 ## 三、后续章节
 
 - dexOptions
@@ -91,7 +99,6 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 - packagingOptions
 - compileOptions
 - dataBinding
-- signingConfigs
 - testOptions
 
 ## 四、如何使用该项目

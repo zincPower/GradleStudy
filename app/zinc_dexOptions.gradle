@@ -22,7 +22,7 @@ android {
             // 开启 dex 分包
             multiDexEnabled true
             // 设置将需要保存至主dex的文件
-            proguardFile file('keep/keep_in_main_dex.txt')
+            multiDexKeepFile file('keep/keep_in_main_dex.txt')
         }
     }
 
@@ -40,8 +40,8 @@ android {
         // 大模式
         jumboMode true
 
-        // 是否保存 运行是的 注解
-        keepRuntimeAnnotatedClasses true
+        // 是否保存 被运行时注解的类 保存至主dex
+        keepRuntimeAnnotatedClasses false
 
         // 最大进程数 默认为4
         maxProcessCount 4

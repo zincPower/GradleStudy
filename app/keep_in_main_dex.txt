@@ -1,0 +1,1 @@
+com/zinc/gradlestudy/MainActivity.class

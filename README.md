@@ -98,10 +98,16 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 
 - github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_dexOptions.gradle)
 
+### 10、externalNativeBuild
+
+- CSDN: [externalNativeBuild——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/103680701)
+
+- 掘金： [externalNativeBuild——安卓gradle](https://juejin.im/post/5e01b3df5188251255041356)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_externalNativeBuild.gradle)
 
 ## 三、后续章节
 
-- externalNativeBuild
 - aaptOptions
 - adbOptions
 - packagingOptions
@@ -149,6 +155,6 @@ csdn：https://blog.csdn.net/weixin_37625173
 
 ### 2、赞赏
 
-如果觉得博客对您有所帮助或启发，赞赏下吧。小盆友会写更多的优质文章与大家分享
+如果觉得博客对您有所帮助或启发，请我喝杯咖啡吧，小盆友会更加信心百倍的写下去
 
 ![](https://github.com/zincPower/GradleStudy/blob/master/img/zincPay.jpg)

@@ -1,0 +1,222 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.zinc.gradlestudy"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+}
+
+// 任何对象都有一个 ext 的属性
+//ext.subGradle = "zincSubGradle"
+//
+//def zinc = "zincPower"
+//
+//task show {
+//    ext.showExt = "zincShowExt"
+//
+//    println zinc
+//    println "$ext $ext.showExt"
+//    println "$project.ext $project.ext.subGradle"
+//    println "$rootProject.ext $rootProject.ext.topGradle"
+//    println "$PropertyZinalue"
+//}
+
+task A {
+    doLast {
+        println "A"
+    }
+}
+
+task B {
+    doLast {
+        println "B"
+    }
+}
+
+// C任务依赖于 A,B, 运行" ./gradlew app:C" 则会运行A和B，
+// 但A和B的顺序没有规定，如果需要确定则要编写A 和 B的顺序
+// [A,B] 和 [B,A] 的运行结果不会决定顺序
+task C(dependsOn: [A, B]) {
+    doLast {
+        println "C"
+    }
+}
+
+// 确定 A 和 B 的顺序
+//A.dependsOn B
+
+// A 必须跑在 B 之后
+//A.mustRunAfter B
+
+// 并行情况下，B可能在A之前也可之后
+//A.shouldRunAfter B
+
+task D {
+    doLast {
+        println "D"
+    }
+}
+
+// 在运行完A之后运行，可以用来执行一些资源的释放
+A.finalizedBy D
+// B 依赖于 A, A的终结任务D会在 A和B 运行间运行
+B.dependsOn A
+
+class ZincTask extends DefaultTask {
+
+    // Input 和 OutputFile 如果都没有改，则会使用原来的，如果有改，则重新生成
+//    @Input
+//    // Optional 可选
+//    @Optional
+//    String filePath;
+//
+//    @OutputFile
+//    File file;
+
+
+    ZincTask() {
+        group 'zincGroup'
+        description 'zinc的集合组'
+
+        outputs.upToDateWhen {
+
+            // 返回true，则开启增量，返回false，关闭
+            false
+
+        }
+    }
+
+    @TaskAction
+    void run() {
+        println "zincTask"
+
+        println inputs.files.first()
+
+        println inputs.files.singleFile
+    }
+
+}
+
+// https://docs.gradle.org/current/dsl/index.html
+
+// 创建任务的方法
+// 1、
+//tasks.create("zincTask", ZincTask)
+// 2、
+task zinc(type: ZincTask) {
+//    filePath = "path/to/zincTask"
+//    file = file("zinc.txt")
+    inputs.file file("zinc")
+}
+
+//task zzip(type: Zip){
+//
+//    // 压缩包的名称
+//    archiveName 'zin.zip'
+//    // 生成的目标
+//    destinationDir file("${buildDir}/zip")
+//    // 打包文件
+//    from "zinc"
+//
+//}
+
+afterEvaluate {
+    task zipp(type: Zip){
+        archiveName "zi.zip"
+        destinationDir file("${buildDir}/zip")
+        from tasks.getByName("packageDebug").outputs.files
+    }
+}
+
+// 1、分析构建脚本 生成settings与project类
+// 2、进行初始化配置
+// 3、执行任务
+
+// 对gradle构建生命周期 hook
+
+// 在分析完成gradle 之后执行
+afterEvaluate {
+
+}
+
+// 对于引入了android插件的工程无效
+beforeEvaluate {
+
+}
+
+// 这里的和上面两个一样
+//gradle.addProjectEvaluationListener(new ProjectEvaluationListener() {
+//    @Override
+//    void beforeEvaluate(Project project) {
+//
+//    }
+//
+//    @Override
+//    void afterEvaluate(Project project, ProjectState state) {
+//
+//    }
+//})
+
+//gradle.addListener(new BuildListener(){
+//
+//    @Override
+//    void buildStarted(Gradle gradle) {
+//
+//    }
+//
+//    @Override
+//    void settingsEvaluated(Settings settings) {
+//
+//    }
+//
+//    @Override
+//    void projectsLoaded(Gradle gradle) {
+//
+//    }
+//
+//    @Override
+//    void projectsEvaluated(Gradle gradle) {
+//
+//    }
+//
+//    @Override
+//    void buildFinished(BuildResult result) {
+//
+//    }
+//})
+
+// 可以看到任务图 gradle
+gradle.addListener(new TaskExecutionGraphListener(){
+
+    @Override
+    void graphPopulated(TaskExecutionGraph graph) {
+        println graph.allTasks
+    }
+
+})

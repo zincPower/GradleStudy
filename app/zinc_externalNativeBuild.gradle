@@ -23,13 +23,15 @@ android {
 
     externalNativeBuild {
 
-        // ndk 的 "构建文件"!!!
         ndkBuild {
             path 'Android.mk'
+            buildStagingDirectory "./outputs/ndk-build"
         }
 
         cmake {
-            path 'CMakeLists.txt'
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+            buildStagingDirectory "./outputs/cmake"
         }
 
     }

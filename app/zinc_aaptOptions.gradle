@@ -26,21 +26,26 @@ android {
     // 命令行通过 aapt 可以查看可输入的
     // https://developer.android.com/studio/command-line/aapt2
     aaptOptions{
-        // aapt 执行的额外参数
-        //  --rename-manifest-package 更改包名
-//        additionalParameters '--rename-manifest-package','com.zinc.test',
+//        // aapt 执行的额外参数
+//        //  --rename-manifest-package 更改包名
+//        additionalParameters '--rename-manifest-package','com.zinc.test'
 //        additionalParameters '-R', 'src/main/res2/', '--auto-add-overlay'
 //        additionalParameters '-v'
 
         // 对 png 进行优化检查
-        cruncherEnabled false
+//        cruncherEnabled false
 
-        // 忽略掉 jpg 后缀的图像，只会排除 res 下的资源，assets下的资源不会排除
-//        ignoreAssets "*.jpg"
+//        failOnMissingConfigEntry true
+
+//        cruncherProcesses 4
+
+        // 忽略掉 png 后缀的图像，只会排除 assets 下的资源，res下的资源不会排除
+//        ignoreAssets "*.png"
+//        ignoreAssetsPattern '*.png'
 
         // 是否对资源进行压缩，如果传入''，则表明不会进行压缩，默认不对"jpg"、"png"压缩
         // aapt l -v apk路径 进行查看
-        noCompress ''
+//        noCompress ''
         // 不对 bat 进行压缩
 //        noCompress '.bat'
     }

@@ -106,9 +106,16 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 
 - github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_externalNativeBuild.gradle)
 
+### 11、aaptOptions
+
+- CSDN: [aaptOptions——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/103685230)
+
+- 掘金： [aaptOptions——安卓gradle](https://juejin.im/post/5e02d116f265da339e4647fa)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_aaptOptions.gradle)
+
 ## 三、后续章节
 
-- aaptOptions
 - adbOptions
 - packagingOptions
 - compileOptions

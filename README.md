@@ -114,9 +114,17 @@ github: [GradleStudy](https://github.com/zincPower/GradleStudy)
 
 - github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_aaptOptions.gradle)
 
+### 12、adbOptions
+
+- CSDN: [adbOptions——安卓gradle](https://blog.csdn.net/weixin_37625173/article/details/103696703)
+
+- 掘金： [adbOptions——安卓gradle](https://juejin.im/post/5e08b4cd6fb9a01624455b57)
+
+- github代码: [传送门](https://github.com/zincPower/GradleStudy/blob/master/app/zinc_adbOptions.gradle)
+
+
 ## 三、后续章节
 
-- adbOptions
 - packagingOptions
 - compileOptions
 - dataBinding

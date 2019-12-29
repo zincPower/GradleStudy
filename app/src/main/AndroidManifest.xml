@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zinc.gradlestudy">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,11 +23,13 @@
         <!--            android:name="key"-->
         <!--            android:value="${key}" />-->
 
-<!--        <uses-library-->
-<!--            android:name="com.zinc.matchingalibrary"-->
-<!--            android:required="true" />-->
+        <!--        <uses-library-->
+        <!--            android:name="com.zinc.matchingalibrary"-->
+        <!--            android:required="true" />-->
 
-        <meta-data android:name="key" android:value="jpy"/>
+        <meta-data
+            android:name="key"
+            android:value="jpy" />
 
     </application>
 

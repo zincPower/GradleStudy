@@ -10,7 +10,7 @@
 
 ## 一、项目宗旨
 
-本项目主要用于记录 Android Gradle 学习中的点滴。
+本项目主要用于分享 Android Gradle 中配置属性如何使用，形成知识体系，使用起来更加游刃有余
 
 ![](https://github.com/zincPower/GradleStudy/blob/master/img/logo.png)
 
@@ -143,33 +143,42 @@ project(':app').buildFileName = 'xxx.gradle'
 
 ## 五、其他项目推荐
 
-### 1、Android 高级UI
+### 1、知识体系
 
-简介：分享Android中UI的一些知识和应用
+Android 高级 UI：https://github.com/zincPower/UI2018
 
-项目地址：[UI2018](https://github.com/zincPower/UI2018)
+Android Gradle：https://github.com/zincPower/GradleStudy
 
-### 2、JRecycleView
+Lua：https://github.com/zincPower/lua_study_2022
+
+### 2、开源框架
+
+#### JRecycleView
 
 简介：简单的让RecycleView更有趣
 
-项目地址：[JRecycleView](https://github.com/zincPower/JRecycleView)
+项目地址：https://github.com/zincPower/JRecycleView
 
-### 3、JPermission
+#### JPermission
 
 简介：Android（安卓）基于注解的6.0权限动态申请
 
-项目地址：[JPermission](https://github.com/zincPower/JPermission)
+项目地址：https://github.com/zincPower/JPermission
 
 ## 六、作者简介
+
 ### 1、个人博客
 
 掘金：https://juejin.im/user/5c3033ef51882524ec3a88ba/posts
 
 csdn：https://blog.csdn.net/weixin_37625173
 
+公众号：微信搜索 "江澎涌" ，或扫描二维码
+
+![](https://github.com/zincPower/GradleStudy/blob/master/img/公众号.png)
+
 ### 2、赞赏
 
-如果觉得博客对您有所帮助或启发，请我喝杯咖啡吧，小盆友会更加信心百倍的写下去
+如果觉得博客对您有所帮助或启发，请我喝杯水果茶吧 😄
 
 ![](https://github.com/zincPower/GradleStudy/blob/master/img/zincPay.jpg)
